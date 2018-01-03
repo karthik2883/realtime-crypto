@@ -1,0 +1,8 @@
+exports.isEmpty = function(param) {
+    
+};
+
+ 
+
+
+ 
