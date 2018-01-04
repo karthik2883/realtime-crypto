@@ -1,4 +1,5 @@
 'use strict';
+
 var appConstant = require('./config/appConstant');
 var bittrex = require('node-bittrex-api');
 var custom_func  = require('./utils/custom_function');

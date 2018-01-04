@@ -21,7 +21,7 @@ custom_func.prototype.saveTicker = function (doc) {
             }
         });
     });
-}
+};
 
 custom_func.prototype.getTicker = function (param) {
     return new Promise(function (resolve, reject) {
@@ -33,7 +33,7 @@ custom_func.prototype.getTicker = function (param) {
         });
     });
 
-}
+};
 
 custom_func.prototype.subscribe = function (param) {
     return new Promise(function (resolve, reject) {
@@ -45,7 +45,7 @@ custom_func.prototype.subscribe = function (param) {
         });
     });
 
-}
+};
 
 custom_func.prototype.unsubscribe = function (param) {
     return new Promise(function (resolve, reject) {
@@ -57,7 +57,7 @@ custom_func.prototype.unsubscribe = function (param) {
         });
     });
 
-}
+};
 
 custom_func.prototype.socketEmit = function (param) {
     return new Promise(function (resolve, reject) {
@@ -69,6 +69,6 @@ custom_func.prototype.socketEmit = function (param) {
         });
     });
 
-}
+};
 
 module.exports = custom_func;
