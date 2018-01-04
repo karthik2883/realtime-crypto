@@ -4,19 +4,22 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
-  <div id="app">
-    <h1>{{title}}</h1>
-  </div>
+   <ul id="app" class="demo">
+      <li v-for="v in value">
+          {{ v }}
+        </li>
+      </ul>
   <script>
     var socket = io.connect();
-    socket.on('stream', function(data){
+     socket.on('stream', function(data){
         console.log(data);
-      app.title = data.title;
+        app.value = data;
     });
+
     var app = new Vue({
       el: "#app",
       data: {
-        title: "I'm an even uglier signup page. Fix me!"
+        value:[]
       },
       methods: {
       }
