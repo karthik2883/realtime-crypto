@@ -5,7 +5,7 @@ var appConstant = require('./config/appConstant');
 var bittrex = require('node-bittrex-api');
 var custom_func  = require('./utils/custom_function');
 var custom_func = new custom_func();
- var ticker =[] ; 
+var ticker =[] ; 
 bittrex.websockets.client(function() {
      bittrex.websockets.listen(function(data, client) {
       if (data.M === 'updateSummaryState') {
