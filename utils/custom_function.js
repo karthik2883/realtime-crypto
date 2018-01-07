@@ -1,4 +1,4 @@
-var Promise = require("promise"),
+const Promise = require("promise"),
     Datastore = require('nedb-core'),
     db = new Datastore({
         filename: './data.db',
@@ -15,7 +15,7 @@ custom_func.prototype.saveTicker = function (doc) {
          db.insert(doc, function (err, newDoc) {
             if (!err) {
                 resolve(newDoc);
-                console.log(newDoc);
+               // console.log(newDoc);
             } else {
                 reject("error came while insert");
             }
