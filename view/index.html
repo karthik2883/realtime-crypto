@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <script src="/socket.io/socket.io.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
 </head>
 <table class="demo" width="100%" align="left">
-  <tr>
-   
+  <tr>   
       <table width="100%" cellpadding=1 cellspacing=1 border="1" align="left" id="app">
         <tr>
             <td>market </td>
@@ -22,11 +20,11 @@
             <td>OpenBuyOrders</td>
             <td>OpenSellOrders</td>
             <td>PrevDay</td>
-            <td>Created</td>
-        </tr>
-         <template v-for="item in value">
+          </tr>
+        <template v-for="item in value">
+            {{item}} 
         <tr>
-          <td>{{item.MarketName}}</td>
+          <!-- <td>{{item.MarketName}}</td>
           <td>{{item.High}} </td>
           <td>{{item.Low}} </td>
           <td>{{item.Volume}} </td>
@@ -37,8 +35,7 @@
           <td>{{item.Ask}} </td>
           <td>{{item.OpenBuyOrders}} </td>
           <td>{{item.OpenSellOrders}} </td>
-          <td>{{item.PrevDay}} </td>
-          <td>{{item.Created}} </td>
+          <td>{{item.PrevDay}} </td> -->
           <tr>
             </template>
       </table>
@@ -50,16 +47,18 @@
   var ticker = [];
   socket.on('stream', function (data) {
     var x = JSON.stringify(data)
-    // console.log("parse", JSON.parse(x));
     for (var k in JSON.parse(x)) {
-      // console.log(k, JSON.parse(x)[k]);
-      ticker.push(JSON.parse(x)[k]);
+      let name  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2.MarketName;
+      let value  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2 ;
+      console.log(JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2.MarketName);
+      var item = { "BTC-ADX": value };
+         ticker.push(item);
     }
     setTimeout(function () {
+      console.log(ticker);
       app.value = ticker;
+       
     }, 2000);
-
-
   });
   var app = new Vue({
     el: "#app",
