@@ -21,21 +21,20 @@
             <td>OpenSellOrders</td>
             <td>PrevDay</td>
           </tr>
-        <template v-for="item in value">
-            {{item}} 
-        <tr>
-          <!-- <td>{{item.MarketName}}</td>
-          <td>{{item.High}} </td>
-          <td>{{item.Low}} </td>
-          <td>{{item.Volume}} </td>
-          <td>{{item.Last}} </td>
-          <td>{{item.BaseVolume}} </td>
-          <td>{{item.TimeStamp}} </td>
-          <td>{{item.Bid}} </td>
-          <td>{{item.Ask}} </td>
-          <td>{{item.OpenBuyOrders}} </td>
-          <td>{{item.OpenSellOrders}} </td>
-          <td>{{item.PrevDay}} </td> -->
+        <template v-for="(item, key, index) in value">
+          <tr v-for="(it, key, index) in item">
+          <td>{{it.value.MarketName}}</td>
+          <td>{{it.value.High}} </td>
+          <td>{{it.value.Low}} </td>
+          <td>{{it.value.Volume}} </td>
+          <td>{{it.value.Last}} </td>
+          <td>{{it.value.BaseVolume}} </td>
+          <td>{{it.value.TimeStamp}} </td>
+          <td>{{it.value.Bid}} </td>
+          <td>{{it.value.Ask}} </td>
+          <td>{{it.value.OpenBuyOrders}} </td>
+          <td>{{it.value.OpenSellOrders}} </td>
+          <td>{{it.value.PrevDay}} </td>
           <tr>
             </template>
       </table>
@@ -43,16 +42,19 @@
     </tr>
 </table>
 <script>
+  
   var socket = io.connect();
-  var ticker = [];
+ 
+  var item = {};
   socket.on('stream', function (data) {
+    var ticker = [];
     var x = JSON.stringify(data)
     for (var k in JSON.parse(x)) {
-      let name  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2.MarketName;
-      let value  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2 ;
+      var name  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2.MarketName;
+      var value  = JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2 ;
       console.log(JSON.parse(x)[k].data[JSON.parse(x)[k].data.length-1].param2.MarketName);
-      var item = { "BTC-ADX": value };
-         ticker.push(item);
+      item[name] = {value};
+      ticker.push(item);
     }
     setTimeout(function () {
       console.log(ticker);
