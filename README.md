@@ -6,7 +6,7 @@ Server Side Nodejs Express
 Client Side Vue.js
 
 ## Start
-download or pull and run 
+download or pull 
 ## 
 npm install
 ## 
