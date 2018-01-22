@@ -13,7 +13,9 @@ npm install
 npm start 
 ## 
 
-
+<p align="center">
+  <img src="Screen.png" width="350"/>
+</p>
 
 
 
