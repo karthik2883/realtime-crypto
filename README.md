@@ -14,7 +14,7 @@ npm start
 ## 
 
 <p align="center">
-  <img src="Screen.png" width="350"/>
+  <img src="Screen.png" width="800" height="500"/>
 </p>
 
 
